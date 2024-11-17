@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="justify-center flex items-center h-screen">
-      <button @click="filter">Run Search</button>
+    <ReservationForm />
+    <div class="justify-center flex items-center">
       <button @click="composer">Load More</button>
     </div>
 
@@ -16,34 +16,22 @@
 </template>
 
 <script lang="ts">
-import { onMounted, computed } from "vue";
 import { storeToRefs } from "pinia";
-import { useOntoActions } from "../stores/OntoActions";
-
+import { useOntopoActions } from "../stores/OntopoStore";
+import ReservationForm from "../components/ReservationForm.vue";
 import ErrorHandler from "../components/ErrorHandler.vue";
 
 export default {
-  components: { ErrorHandler },
+  components: { ErrorHandler, ReservationForm },
   setup() {
-    const onto = useOntoActions();
-    const { authError, data, searchId } = storeToRefs(onto);
-
-    onMounted(() => onto.loginAnonymously());
-
-    const filter = async () => {
-      await onto.runFilter();
-      if (searchId.value) {
-        await onto.requestData();
-      }
-    };
+    const ontopo = useOntopoActions();
+    const { data, searchId } = storeToRefs(ontopo);
 
     const composer = async () => {
-      await onto.requestData();
+      await ontopo.requestData();
     };
 
-    return { authError, filter, data, composer };
+    return { data, composer };
   },
 };
 </script>
-
-<style lang="scss" scoped></style>

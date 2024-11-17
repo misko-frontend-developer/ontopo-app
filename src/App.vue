@@ -2,14 +2,31 @@
   <header>
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
   </header>
-  <router-view />
   <main>
     <div v-if="authError">
       <ErrorHandler :errorMessage="authError" />
     </div>
+    <div v-else>
+      <router-view />
+    </div>
   </main>
 </template>
 
-<script>
-export default {};
+<script lang="ts">
+import { onMounted } from "vue";
+import { storeToRefs } from "pinia";
+import { useAuthActions } from "./stores/AuthStore";
+import ErrorHandler from "./components/ErrorHandler.vue";
+
+export default {
+  components: { ErrorHandler },
+  setup() {
+    const authActions = useAuthActions();
+    const { authError } = storeToRefs(authActions);
+
+    onMounted(() => authActions.loginAnonymously());
+
+    return { authError };
+  },
+};
 </script>
