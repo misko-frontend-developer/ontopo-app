@@ -1,7 +1,7 @@
 import axios, { InternalAxiosRequestConfig, AxiosError } from "axios";
 
 const http = axios.create({
-  baseURL: import.meta.env.VITE_APPLICATION_URL as string,
+  baseURL: import.meta.env.VITE_APPLICATION_BACKEND_URL as string,
   timeout: 10000,
 });
 
