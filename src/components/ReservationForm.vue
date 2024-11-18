@@ -1,42 +1,36 @@
 <template>
-  <div class="flex justify-center items-center my-24">
-    <div>
-      <label class="hidden" for="size">Size (Number of Guests):</label>
+  <div class="flex md:flex-row flex-col justify-center items-center p-10">
+    <div class="flex justify-center items-center">
       <input
-        class="h-[50px]"
+        class="md:max-w-[195px] md:w-[195px] w-[150px] text-center h-[70px] border border-gray rounded-sm p-2"
         id="size"
         type="number"
         v-model="formData.size"
-        placeholder="Size (Number of Guests)"
         min="1"
       />
-    </div>
-    <div>
-      <label class="hidden" for="date">Date of Reservation:</label>
+
       <input
-        class="h-[50px]"
+        class="md:max-w-[195px] md:w-[195px] w-[150px] text-center h-[70px] border border-gray rounded-sm p-2"
         id="date"
         type="date"
         v-model="formData.date"
-        placeholder="Date of Reservation:"
         onkeydown="return false"
+        :min="formData.date"
       />
-    </div>
 
-    <div>
-      <label class="hidden" for="time">Time of Reservation:</label>
       <input
-        class="h-[50px]"
+        class="md:max-w-[195px] md:w-[195px] w-[150px] text-center h-[70px] border border-gray rounded-sm p-2"
         id="time"
         type="time"
         v-model="formData.time"
-        placeholder="Time of Reservation:"
         onkeydown="return false"
       />
     </div>
-
-    <button class="bg-blue-500 ml-5 px-5 h-[50px]" @click="filter">
-      Pretrazi
+    <button
+      class="md:max-w-[210px] max-w-[480px] md:w-[210px] h-[70px] w-[450px] bg-stone-950 text-white px-4 md:mt-0 mt-5 rounded-sm md:ml-5 ml-0 font-bold"
+      @click="filter"
+    >
+      Pretraži
     </button>
   </div>
 </template>

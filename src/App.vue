@@ -1,5 +1,6 @@
 <template>
-  <header>
+  <header class="flex justify-center bg-gray-800 p-10">
+    <p class="font-semibold">Ontopo Application</p>
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
   </header>
   <main>
