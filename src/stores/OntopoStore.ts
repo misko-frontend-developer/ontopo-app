@@ -61,8 +61,8 @@ export const useOntopoActions = defineStore("ontpoActions", {
         if (axios.isAxiosError(error)) {
           const authStore = useAuthActions();
           const message = formatErrorMessage(error?.response?.data?.message);
-          authStore.authError = message;
-          console.error("Error during async call:", message);
+          authStore.authError = message ?? error.message;
+          console.error("Error during async call:", message ?? error.message);
         }
       }
     },
@@ -85,7 +85,7 @@ export const useOntopoActions = defineStore("ontpoActions", {
         if (axios.isAxiosError(error)) {
           const authStore = useAuthActions();
           const message = formatErrorMessage(error?.response?.data?.message);
-          authStore.authError = message;
+          authStore.authError = message ?? error.message;
           console.error("Error during async call:", message);
         }
       }

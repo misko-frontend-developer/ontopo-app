@@ -1,37 +1,54 @@
 <template>
-  <div class="flex md:flex-row flex-col justify-center items-center p-10">
-    <div class="flex justify-center items-center">
-      <input
-        class="md:max-w-[195px] md:w-[195px] w-[150px] text-center h-[70px] border border-gray rounded-sm p-2"
-        id="size"
-        type="number"
-        v-model="formData.size"
-        min="1"
-      />
+  <div
+    class="flex flex-col justify-center items-center bg-blue-200 min-h-[30rem]"
+  >
+    <div class="2xl:w-1/2 lg:w-3/4 py-10 lg:text-start text-center">
+      <h1 class="font-bold m-auto text-4xl mb-4">
+        Kulinarsko iskustvo u Beogradu
+      </h1>
 
-      <input
-        class="md:max-w-[195px] md:w-[195px] w-[150px] text-center h-[70px] border border-gray rounded-sm p-2"
-        id="date"
-        type="date"
-        v-model="formData.date"
-        onkeydown="return false"
-        :min="formData.date"
-      />
-
-      <input
-        class="md:max-w-[195px] md:w-[195px] w-[150px] text-center h-[70px] border border-gray rounded-sm p-2"
-        id="time"
-        type="time"
-        v-model="formData.time"
-        onkeydown="return false"
-      />
+      <p class="font-thin m-auto text-2xl">
+        Oseti njegov duh gde svaki zalogaj otkriva priču o tradiciji i
+        inovaciji. Neka gastronomija Beograda probudi sva tvoja čula i učini da
+        želiš još.
+      </p>
     </div>
-    <button
-      class="md:max-w-[210px] max-w-[480px] md:w-[210px] h-[70px] w-[450px] bg-stone-950 text-white px-4 md:mt-0 mt-5 rounded-sm md:ml-5 ml-0 font-bold"
-      @click="filter"
+    <div
+      class="flex lg:flex-row flex-col justify-center items-center 2xl:w-1/2 lg:w-3/4"
     >
-      Pretraži
-    </button>
+      <div class="flex justify-center items-center">
+        <input
+          class="text-center h-[70px] w-[220px] border border-gray rounded-sm p-2"
+          id="size"
+          type="number"
+          v-model="formData.size"
+          min="1"
+        />
+
+        <input
+          class="text-center h-[70px] w-[220px] border border-gray rounded-sm p-2"
+          id="date"
+          type="date"
+          v-model="formData.date"
+          onkeydown="return false"
+          :min="todayDate"
+        />
+
+        <input
+          class="text-center h-[70px] w-[220px] border border-gray rounded-sm p-2"
+          id="time"
+          type="time"
+          v-model="formData.time"
+          onkeydown="return false"
+        />
+      </div>
+      <button
+        class="lg:w-[260px] w-full h-[70px] bg-stone-950 text-white px-4 rounded-sm lg:ml-5 ml-0 lg:mt-0 mt-5 font-bold"
+        @click="filter"
+      >
+        Pretraži
+      </button>
+    </div>
   </div>
 </template>
 
@@ -51,6 +68,7 @@ export default defineComponent({
       date: new Date().toISOString().split("T")[0],
       time: "17:00",
     });
+    const todayDate = computed(() => new Date().toISOString().split("T")[0]);
 
     const filter = async () => {
       await ontopo.runFilter({
@@ -66,6 +84,7 @@ export default defineComponent({
     return {
       formData,
       filter,
+      todayDate,
     };
   },
 });

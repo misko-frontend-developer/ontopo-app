@@ -1,6 +1,6 @@
 <template>
   <div class="flex lg:flex-row flex-col my-5 border border-gray rounded-sm p-4">
-    <div class="md:w-[190px] w-100 md:px-0 px-5 md:mb-0 mb-4">
+    <div class="lg:w-[190px] w-100 lg:px-0 px-5 lg:mb-0 mb-4">
       <img
         width="100%"
         style="min-height: 100px; min-width: 100px"
@@ -36,7 +36,7 @@
       >
         <div v-for="area in post.availability.areas" :key="area">
           <p class="my-5 text-sm">{{ area.name }}</p>
-          <div class="flex md:flex-row flex-col">
+          <div class="flex lg:flex-row flex-col">
             <div
               class="flex flex-col text-center cursor-pointer border border-gray rounded-sm md:mr-5 mr-0 md:my-0 my-2 p-2"
               v-for="option in area.options"
@@ -57,15 +57,14 @@
 </template>
 
 <script>
-import { toRaw, ref } from "vue";
+import { defineComponent, toRaw, ref } from "vue";
 
-export default {
+export default defineComponent({
   props: ["post"],
 
   setup() {
     const show = ref(false);
-
     return { toRaw, show };
   },
-};
+});
 </script>

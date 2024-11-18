@@ -8,7 +8,7 @@ interface LoginResponse {
 
 interface State {
   token: string;
-  authError: any;
+  authError: string;
 }
 export const useAuthActions = defineStore("authActions", {
   state: (): State => ({
