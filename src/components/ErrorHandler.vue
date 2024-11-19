@@ -40,16 +40,6 @@
       </div>
     </div>
   </div>
-  <!-- <div class="justify-center flex bg-blue-300 items-center h-screen text-4xl">
-    {{ authError }}
-
-    <button
-      v-if="authError && authError.toLowerCase().includes('token')"
-      @click="renewSession"
-    >
-      Renew session
-    </button>
-  </div> -->
 </template>
 
 <script>

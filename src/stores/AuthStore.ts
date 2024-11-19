@@ -32,8 +32,7 @@ export const useAuthActions = defineStore("authActions", {
           );
 
           return (
-            //problem with expiration token, added 50000 miliseconds, as it returns always current time.
-            Math.floor(new Date().getTime() / 1000) + 50000 >=
+            Math.floor(new Date().getTime() / 1000) >=
             JSON.parse(jsonPayload)?.exp
           );
         } catch (error: any) {
@@ -59,7 +58,7 @@ export const useAuthActions = defineStore("authActions", {
           }
         }
       } else {
-        if (!this.isTokenValid) {
+        if (this.isTokenValid) {
           this.authError = "There is problem with your token";
           return;
         }

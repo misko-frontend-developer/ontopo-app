@@ -3,4 +3,6 @@ const formatErrorMessage = (jsonString: string) =>
     ? JSON.parse(jsonString)?.response?.errors[0]?.message
     : jsonString;
 
-export default formatErrorMessage;
+const formatDateTime = (data: string) => data.replace(/[-:]/g, "");
+
+export { formatErrorMessage, formatDateTime };

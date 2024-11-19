@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import axios, { AxiosResponse } from "axios";
 import http from "@/utils/http";
 import { useAuthActions } from "./AuthStore";
-import formatErrorMessage from "@/utils";
+import { formatErrorMessage } from "@/utils";
 
 interface SearchResponse {
   search_id: string;
@@ -18,6 +18,7 @@ interface State {
   loading: boolean;
   loadingLoadMore: boolean;
   page: number;
+  perPage: number;
   total: number;
   data: any;
 }
@@ -32,6 +33,7 @@ export const useOntopoActions = defineStore("ontpoActions", {
     loadingLoadMore: false,
     loading: false,
     page: 0,
+    perPage: 10,
     total: 0,
     data: [],
   }),
@@ -39,7 +41,8 @@ export const useOntopoActions = defineStore("ontpoActions", {
   actions: {
     async requestData() {
       try {
-        this.loadingLoadMore = Math.ceil(this.total) / 10 >= this.page;
+        this.loadingLoadMore =
+          Math.ceil(this.total) / this.perPage >= this.page;
 
         if (!this.loadingLoadMore) {
           return;

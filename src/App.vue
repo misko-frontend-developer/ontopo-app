@@ -14,15 +14,15 @@
 </template>
 
 <script lang="ts">
-import { onMounted } from "vue";
+import { onMounted, defineComponent } from "vue";
 import { storeToRefs } from "pinia";
 import { useAuthActions } from "./stores/AuthStore";
 
-export default {
+export default defineComponent({
   setup() {
     const authActions = useAuthActions();
 
     onMounted(() => authActions.loginAnonymously());
   },
-};
+});
 </script>

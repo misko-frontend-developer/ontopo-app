@@ -2,7 +2,7 @@
   <div
     class="flex flex-col justify-center items-center bg-blue-200 min-h-[30rem]"
   >
-    <div class="2xl:w-1/2 lg:w-3/4 py-10 lg:text-start text-center">
+    <div class="2xl:w-1/2 lg:w-3/4 pb-10 lg:text-start text-center">
       <h1 class="font-bold m-auto text-4xl mb-4">
         Kulinarsko iskustvo u Beogradu
       </h1>
@@ -44,7 +44,7 @@
       </div>
       <button
         class="lg:w-[260px] w-full h-[70px] bg-stone-950 text-white px-4 rounded-sm lg:ml-5 ml-0 lg:mt-0 mt-5 font-bold"
-        @click="filter"
+        @click="searchRestorants"
       >
         Pretraži
       </button>
@@ -56,6 +56,7 @@
 import { storeToRefs } from "pinia";
 import { defineComponent, reactive, computed } from "vue";
 import { useOntopoActions } from "../stores/OntopoStore";
+import { formatDateTime } from "@/utils";
 
 export default defineComponent({
   name: "ReservationForm",
@@ -70,11 +71,11 @@ export default defineComponent({
     });
     const todayDate = computed(() => new Date().toISOString().split("T")[0]);
 
-    const filter = async () => {
+    const searchRestorants = async () => {
       await ontopo.runFilter({
         size: formData.size.toString(),
-        date: formData.date.replace(/[-:]/g, ""),
-        time: formData.time.replace(/[-:]/g, ""),
+        date: formatDateTime(formData.date),
+        time: formatDateTime(formData.time),
       });
       if (searchId.value) {
         await ontopo.requestData();
@@ -83,7 +84,7 @@ export default defineComponent({
 
     return {
       formData,
-      filter,
+      searchRestorants,
       todayDate,
     };
   },

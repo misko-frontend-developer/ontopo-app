@@ -30,7 +30,7 @@
       <div
         :class="
           show
-            ? 'flex flex-col max-h-screen  overflow-hidden transition-all duration-500'
+            ? 'flex flex-col lg:max-h-screen max-h-auto overflow-hidden transition-all duration-500'
             : 'flex flex-col max-h-0 overflow-hidden transition-all duration-500'
         "
       >
@@ -57,14 +57,14 @@
 </template>
 
 <script>
-import { defineComponent, toRaw, ref } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   props: ["post"],
-
+  name: "Restorant",
   setup() {
     const show = ref(false);
-    return { toRaw, show };
+    return { show };
   },
 });
 </script>
