@@ -1,33 +1,31 @@
-# ontopo-app
+# Ontopo - Restaurant Search App
 
-This template should help get you started developing with Vue 3 in Vite.
+Ontopo is a demo application built with Vue 3, TypeScript, Tailwind CSS, and Pinia. It allows users to book for restaurants and view relevant information.
 
-## Recommended IDE Setup
+## Features
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Search for restaurants availibility by date, time and number of seats.
+- Built with Vue 3
+- Styled using Tailwind CSS for a responsive and clean design
+- State management handled by Pinia
 
-## Type Support for `.vue` Imports in TS
+### Getting Started
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+1. Clone the repository:
+   git clone
 
-## Customize configuration
+2. Navigate to the project folder:
+   cd ontopo
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+3. Install the required dependencies:
+   npm install
 
-## Project Setup
+4. Start the development server:
+   npm run dev
 
-```sh
-npm install
-```
+## Technologies Used
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
+- **Vue 3**: The latest version of Vue.js, for building dynamic user interfaces
+- **TypeScript**: Provides static typing for better code quality and maintainability
+- **Tailwind CSS**: A utility-first CSS framework for fast and responsive design
+- **Pinia**: A state management library for Vue 3, offering a simpler and more intuitive API than Vuex
